@@ -117,6 +117,13 @@ The API is documented using Postman and can be found in the `docs` directory:
 
  Import the documentation into your postman
 
+### Admin Credentials
+
+To log in as an admin, use the following credentials:
+
+- emailOrUsername: admin
+- Password: securepassword123
+
 ### Database Diagram
 
 A visual representation of the database schema can be found in the `docs` directory:
@@ -134,6 +141,8 @@ You can use this diagram to understand the relationships between the tables.
 - **Tagging System**: Add and filter tasks by tags using endpoints under `/v1/tags`.
 - **Commenting System**: Manage comments with endpoints under `/v1/comments`.
 - **Notifications**: Receive notifications through WebSockets or API endpoints under `/v1/notifications`.
+
+
 
 ## Contributing
 
