@@ -20,7 +20,7 @@ export class TaskTagService {
     let tag = await this.tagService.getTagByName(data.name);
     if (!tag) tag = await this.tagService.createTag({ name: data.name });
     const task = await this.taskRepository.findById(taskId);
-    if (!task || task.createdBy !== userId || task.assignedTo !== userId) {
+    if (!task || task.createdBy !== userId && task.assignedTo !== userId) {
       throw new CustomError("Task not found", 404);
     }
     const exist = await this.taskTagRepository.getATask(taskId, tag.id);

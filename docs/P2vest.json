@@ -1,0 +1,3923 @@
+{
+	"info": {
+		"_postman_id": "1550fcba-f41d-487f-afff-b6db1d0178da",
+		"name": "P2vest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17957003"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Store the accessToken as a token collection variable\r",
+									"pm.test(\"Store the accessToken as a token collection variable\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.collectionVariables.set(\"accessToken\", jsonData.data.accessToken);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"test@test.com\",\r\n    \"username\":\"test\",\r\n    \"password\":\"Querty$1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/auth",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth"
+							]
+						},
+						"description": "This endpoint allows the client to authenticate and obtain an access token by sending a POST request to the specified URL.\n\n### Request Body\n\n- `email` (string): The email of the user for authentication.\n    \n- `username` (string): The username of the user for authentication.\n    \n- `password` (string): The password of the user for authentication.\n    \n\n### Response\n\nThe response will be in JSON format with the following schema:\n\n``` json\n{\n    \"type\": \"object\",\n    \"properties\": {\n        \"message\": {\n            \"type\": \"string\"\n        },\n        \"data\": {\n            \"type\": \"object\",\n            \"properties\": {\n                \"accessToken\": {\n                    \"type\": \"string\"\n                }\n            }\n        },\n        \"success\": {\n            \"type\": \"boolean\"\n        }\n    }\n}\n\n ```"
+					},
+					"response": [
+						{
+							"name": "409",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\":\"test1@test.com\",\r\n    \"username\":\"test3\",\r\n    \"password\":\"Querty$1\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:9999/v1/auth",
+									"host": [
+										"localhost"
+									],
+									"port": "9999",
+									"path": [
+										"v1",
+										"auth"
+									]
+								}
+							},
+							"status": "Conflict",
+							"code": 409,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3e-4sD5NK+9x77c3i/AGkIc+6GQ3G4\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 25 Aug 2024 14:04:43 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Email already exists\",\n    \"data\": null,\n    \"success\": false\n}"
+						},
+						{
+							"name": "201",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\":\"tes81@test.com\",\r\n    \"username\":\"test0\",\r\n    \"password\":\"Querty$1\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/auth",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"auth"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjgxNjg2MTcyLTZiNmUtNDg1MC1hZTYxLWIwMGU0YzdhOTYyYSIsInJlZnJlc2hUb2tlbiI6IjhlZjc4ZjE1ZjJiOWYxOTJlMjNmYmUwZDhhMzI4ZTRjZTJhMGE1MGNkNzQ3ZTkzMDA4ZjUzNWVjM2I5OTM3YWUiLCJpYXQiOjE3MjQ1OTQ3MjIsImV4cCI6MTcyNDU5NjUyMiwiYXVkIjoiYmlmcm9zdCIsImlzcyI6ImJpZnJvc3QifQ.7pV71753y-nEIT8KAwV-NPvrf9FRx1WAPdxAbNu4OMo; Path=/; Expires=Sun, 25 Aug 2024 14:45:22 GMT; HttpOnly; Secure; SameSite=None"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"135-I1aiuM0Od4/9IYIP/OlJduVqXfs\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 25 Aug 2024 14:05:22 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"User created successfully\",\n    \"data\": {\n        \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjgxNjg2MTcyLTZiNmUtNDg1MC1hZTYxLWIwMGU0YzdhOTYyYSIsImlhdCI6MTcyNDU5NDcyMiwiZXhwIjoxNzI0NTk1MzIyLCJhdWQiOiJiaWZyb3N0IiwiaXNzIjoiYmlmcm9zdCJ9.HhCBRlGSgs7jeAYJxroZaLnxnvmgWkAs_YWYdZko0M4\"\n    },\n    \"success\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Store the accessToken as a token collection variable\r",
+									"pm.test(\"Store the accessToken as a token collection variable\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.collectionVariables.set(\"accessToken\", jsonData.data.accessToken);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"emailOrUsername\":\"test-\",\r\n    \"password\":\"Querty$1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						},
+						"description": "### Auth Login\n\nThe `POST` request is used to authenticate and log in the user.\n\n#### Request Body\n\n- `emailOrUsername` (string, required): The email or username of the user.\n    \n- `password` (string, required): The password of the user.\n    \n\n#### Response\n\nThe response is in JSON format and follows the schema below:\n\n``` json\n{\n    \"type\": \"object\",\n    \"properties\": {\n        \"message\": {\n            \"type\": \"string\"\n        },\n        \"data\": {\n            \"type\": \"object\",\n            \"properties\": {\n                \"accessToken\": {\n                    \"type\": \"string\"\n                }\n            }\n        },\n        \"success\": {\n            \"type\": \"boolean\"\n        }\n    }\n}\n\n ```\n\nThe response includes the following properties:\n\n- `message` (string): A message related to the login process.\n    \n- `data` (object): An object containing the access token.\n    \n    - `accessToken` (string): The access token for the authenticated user.\n        \n- `success` (boolean): Indicates the success status of the login operation.\n    \n\n#### Example Response\n\n``` json\n{\n    \"message\": \"\",\n    \"data\": {\n        \"accessToken\": \"\"\n    },\n    \"success\": true\n}\n\n ```"
+					},
+					"response": [
+						{
+							"name": "Login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"emailOrUsername\":\"test-\",\r\n    \"password\":\"Querty$1\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:9999/v1/auth/login",
+									"host": [
+										"localhost"
+									],
+									"port": "9999",
+									"path": [
+										"v1",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImE3MjVhYWVkLWI4MGEtNDQ4Ny1hMDZmLWZlMmI0ZjA1NjhmYSIsInJlZnJlc2hUb2tlbiI6IjEzZWFkZWJkMzhiOTY2YjQ2ODg5MDVmMGEyMmUxMjQ0OGEzNDdhMzE3NDNiNzdjMjE1MDZmMDM2NTlhNDZlY2IiLCJpYXQiOjE3MjQ1OTQxNDUsImV4cCI6MTcyNDU5NTk0NSwiYXVkIjoiYmlmcm9zdCIsImlzcyI6ImJpZnJvc3QifQ.9SnSAGfdXmGPci5vq-I7dUS1xqQUyDxUe0iS6Gkv4-s; Path=/; Expires=Sun, 25 Aug 2024 14:35:45 GMT; HttpOnly; Secure; SameSite=None"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"12c-w5t14zmfy7CuBftGxKIcBbWbV2U\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 25 Aug 2024 13:55:45 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Login successful\",\n    \"data\": {\n        \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImE3MjVhYWVkLWI4MGEtNDQ4Ny1hMDZmLWZlMmI0ZjA1NjhmYSIsImlhdCI6MTcyNDU5NDE0NSwiZXhwIjoxNzI0NTk0NzQ1LCJhdWQiOiJiaWZyb3N0IiwiaXNzIjoiYmlmcm9zdCJ9.BrIgtndPcDsyN7Y4pKUHOL8DshvhktuLJuUdZ28VUTw\"\n    },\n    \"success\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "refreshToken",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Store the accessToken as a token collection variable\r",
+									"pm.test(\"Store the accessToken as a token collection variable\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.collectionVariables.set(\"accessToken\", jsonData.data.accessToken);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/auth/tokens/refresh",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"tokens",
+								"refresh"
+							]
+						},
+						"description": "This endpoint makes an HTTP GET request to refresh an authentication token."
+					},
+					"response": [
+						{
+							"name": "403",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:9999/v1/auth/tokens/refresh",
+									"host": [
+										"localhost"
+									],
+									"port": "9999",
+									"path": [
+										"v1",
+										"auth",
+										"tokens",
+										"refresh"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"42-WfmLf83ENRLc7Kxz76qzFWGFuJk\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 23 Aug 2024 23:22:21 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Invalid or expired token\",\n    \"data\": null,\n    \"success\": false\n}"
+						}
+					]
+				}
+			],
+			"description": "For User Authentications"
+		},
+		{
+			"name": "Task",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"New Task\",\r\n    \"description\":\"A new task\", //optional\r\n    \"assignedTo\":\"a725aaed-b80a-4487-a06f-fe2b4f0568fa\", // optional\r\n    \"dueDate\":\"2024-09-23\", //YYYY-MM-DD(optional)\r\n    \"status\":\"IN_PROGRESS\" //status(optional): IN_PROGRESS, COMPLETED, TODO\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/tasks",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"tasks"
+							]
+						},
+						"description": "### Create a New Task\n\nThis endpoint allows you to create a new task with the provided details.\n\n#### Request Body\n\n- `title` (string, required): The title of the task.\n    \n- `description` (string, optional): A description of the task.\n    \n- `assignedTo` (string, optional): The ID of the user to whom the task is assigned.\n    \n- `dueDate` (string, optional): The due date of the task in the format YYYY-MM-DD.\n    \n- `status` (string, optional): The status of the task. Possible values are IN_PROGRESS, COMPLETED, TODO.\n    \n\n#### Response\n\nThe response is a JSON object with the following properties:\n\n- `message` (string): A message related to the response.\n    \n- `data` (object): An object containing the details of the created task.\n    \n    - `id` (string): The ID of the task.\n        \n    - `title` (string): The title of the task.\n        \n    - `description` (string): The description of the task.\n        \n    - `dueDate` (string): The due date of the task.\n        \n    - `status` (string): The status of the task.\n        \n    - `createdBy` (string): The ID of the user who created the task.\n        \n    - `assignedTo` (string): The ID of the user to whom the task is assigned.\n        \n    - `createdAt` (string): The timestamp when the task was created.\n        \n    - `updatedAt` (string): The timestamp when the task was last updated.\n        \n- `success` (boolean): Indicates if the request was successful.\n    \n\n#### Response JSON Schema\n\n``` json\n{\n  \"type\": \"object\",\n  \"properties\": {\n    \"message\": { \"type\": \"string\" },\n    \"data\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"id\": { \"type\": \"string\" },\n        \"title\": { \"type\": \"string\" },\n        \"description\": { \"type\": [\"string\", \"null\"] },\n        \"dueDate\": { \"type\": [\"string\", \"null\"] },\n        \"status\": { \"type\": \"string\" },\n        \"createdBy\": { \"type\": \"string\" },\n        \"assignedTo\": { \"type\": [\"string\", \"null\"] },\n        \"createdAt\": { \"type\": \"string\" },\n        \"updatedAt\": { \"type\": \"string\" }\n      }\n    },\n    \"success\": { \"type\": \"boolean\" }\n  }\n}\n\n ```"
+					},
+					"response": [
+						{
+							"name": "201",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\":\"New Task\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:9999/v1/tasks",
+									"host": [
+										"localhost"
+									],
+									"port": "9999",
+									"path": [
+										"v1",
+										"tasks"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"136-jxhBcK94r4eRnORqqQfIw/n9U78\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 22 Aug 2024 20:31:48 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Task Created\",\n    \"data\": {\n        \"id\": \"59b4053d-f290-4756-a875-e21688a1379b\",\n        \"title\": \"New Task\",\n        \"description\": null,\n        \"dueDate\": null,\n        \"status\": \"TODO\",\n        \"createdBy\": \"a725aaed-b80a-4487-a06f-fe2b4f0568fa\",\n        \"assignedTo\": null,\n        \"createdAt\": \"2024-08-22T20:31:47.970Z\",\n        \"updatedAt\": \"2024-08-22T20:31:47.970Z\"\n    },\n    \"success\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Tasks by userId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/tasks/assign/users/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"tasks",
+								"assign",
+								"users",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "a725aaed-b80a-4487-a06f-fe2b4f0568fa"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:9999/v1/tasks/assign/users/:id",
+									"host": [
+										"localhost"
+									],
+									"port": "9999",
+									"path": [
+										"v1",
+										"tasks",
+										"assign",
+										"users",
+										":id"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1",
+											"disabled": true
+										},
+										{
+											"key": "limit",
+											"value": "1",
+											"disabled": true
+										},
+										{
+											"key": "status",
+											"value": "TODO",
+											"disabled": true
+										},
+										{
+											"key": "dueDate",
+											"value": "2024-09-21",
+											"description": "YYYY-MM-DD",
+											"disabled": true
+										}
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "6c1aa66d-8118-48e6-918a-1e322385d3bb"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"43b-B3caxCgH15zuOmMSISWyTxid/28\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 25 Aug 2024 19:57:35 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Tasks\",\n    \"data\": {\n        \"tasks\": [\n            {\n                \"id\": \"077f6a6e-a381-4f87-a006-09134eb71afb\",\n                \"title\": \"New Task\",\n                \"description\": \"A new task\",\n                \"dueDate\": \"2024-09-23T00:00:00.000Z\",\n                \"status\": \"COMPLETED\",\n                \"createdBy\": \"a725aaed-b80a-4487-a06f-fe2b4f0568fa\",\n                \"assignedTo\": \"6c1aa66d-8118-48e6-918a-1e322385d3bb\",\n                \"createdAt\": \"2024-08-25T14:00:03.934Z\",\n                \"updatedAt\": \"2024-08-25T19:38:59.265Z\",\n                \"assignedToUser\": {\n                    \"id\": \"6c1aa66d-8118-48e6-918a-1e322385d3bb\",\n                    \"username\": \"test\"\n                },\n                \"createdByUser\": {\n                    \"id\": \"a725aaed-b80a-4487-a06f-fe2b4f0568fa\",\n                    \"username\": \"test-\"\n                }\n            },\n            {\n                \"id\": \"5104e95d-7c64-45d6-8454-11412c601fd1\",\n                \"title\": \"New Task\",\n                \"description\": \"A new task\",\n                \"dueDate\": \"2024-09-22T23:00:00.000Z\",\n                \"status\": \"TODO\",\n                \"createdBy\": \"6c1aa66d-8118-48e6-918a-1e322385d3bb\",\n                \"assignedTo\": \"a725aaed-b80a-4487-a06f-fe2b4f0568fa\",\n                \"createdAt\": \"2024-08-23T10:13:50.500Z\",\n                \"updatedAt\": \"2024-08-23T10:13:50.500Z\",\n                \"assignedToUser\": {\n                    \"id\": \"a725aaed-b80a-4487-a06f-fe2b4f0568fa\",\n                    \"username\": \"test-\"\n                },\n                \"createdByUser\": {\n                    \"id\": \"6c1aa66d-8118-48e6-918a-1e322385d3bb\",\n                    \"username\": \"test\"\n                }\n            }\n        ],\n        \"pagination\": {\n            \"total\": 2,\n            \"page\": 1,\n            \"totalPages\": 1\n        }\n    },\n    \"success\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Task",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/tasks/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"tasks",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "59b4053d-f290-4756-a875-e21688a1379b"
+								}
+							]
+						},
+						"description": "This endpoint retrieves the details of a specific task identified by its ID.\n\nThe response for this request can be documented as a JSON schema:\n\n``` json\n{\n    \"type\": \"object\",\n    \"properties\": {\n        \"message\": {\n            \"type\": \"string\"\n        },\n        \"data\": {\n            \"type\": \"object\",\n            \"properties\": {\n                \"id\": {\n                    \"type\": \"string\"\n                },\n                \"title\": {\n                    \"type\": \"string\"\n                },\n                \"description\": {\n                    \"type\": \"string\"\n                },\n                \"dueDate\": {\n                    \"type\": \"string\"\n                },\n                \"status\": {\n                    \"type\": \"string\"\n                },\n                \"createdBy\": {\n                    \"type\": \"string\"\n                },\n                \"assignedTo\": {\n                    \"type\": \"string\"\n                },\n                \"createdAt\": {\n                    \"type\": \"string\"\n                },\n                \"updatedAt\": {\n                    \"type\": \"string\"\n                }\n            }\n        },\n        \"success\": {\n            \"type\": \"boolean\"\n        }\n    }\n}\n\n ```"
+					},
+					"response": [
+						{
+							"name": "404",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:9999/v1/tasks/:id",
+									"host": [
+										"localhost"
+									],
+									"port": "9999",
+									"path": [
+										"v1",
+										"tasks",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "59b4053d-f290-4756-a875-e21688a1379b"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"38-BnmpRFSIbDOSiHLmLTbfvipUic4\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 23 Aug 2024 19:37:01 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Task not found\",\n    \"data\": null,\n    \"success\": false\n}"
+						},
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/tasks/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"tasks",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "29cc0a9c-0ec0-407f-bb51-f453954f3f8f"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"16e-Jd3hPORAB5J+0c2WqhA/PRoeJy0\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 23 Aug 2024 19:37:32 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Task\",\n    \"data\": {\n        \"id\": \"29cc0a9c-0ec0-407f-bb51-f453954f3f8f\",\n        \"title\": \"New Task\",\n        \"description\": \"A new task\",\n        \"dueDate\": \"2024-09-22T23:00:00.000Z\",\n        \"status\": \"TODO\",\n        \"createdBy\": \"a725aaed-b80a-4487-a06f-fe2b4f0568fa\",\n        \"assignedTo\": \"a725aaed-b80a-4487-a06f-fe2b4f0568fa\",\n        \"createdAt\": \"2024-08-23T19:36:44.939Z\",\n        \"updatedAt\": \"2024-08-23T19:36:44.939Z\"\n    },\n    \"success\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "assign task",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\":\"6c1aa66d-8118-48e6-918a-1e322385d3bb\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/tasks/:id/assign/users/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"tasks",
+								":id",
+								"assign",
+								"users",
+								""
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "59b4053d-f290-4756-a875-e21688a1379b"
+								}
+							]
+						},
+						"description": "This endpoint allows for updating the assigned user for a specific task by making an HTTP PUT request\n\n### Request Body\n\n- userId (string, required): The ID of the user to be assigned to the task.\n    \n\n### Response\n\nThe response is in JSON format and follows the schema below:\n\n``` json\n{\n    \"type\": \"object\",\n    \"properties\": {\n        \"message\": {\n            \"type\": \"string\"\n        },\n        \"data\": {\n            \"type\": \"object\",\n            \"properties\": {\n                \"id\": {\n                    \"type\": \"string\"\n                },\n                \"title\": {\n                    \"type\": \"string\"\n                },\n                \"description\": {\n                    \"type\": \"string\"\n                },\n                \"dueDate\": {\n                    \"type\": \"string\"\n                },\n                \"status\": {\n                    \"type\": \"string\"\n                },\n                \"createdBy\": {\n                    \"type\": \"string\"\n                },\n                \"assignedTo\": {\n                    \"type\": \"string\"\n                },\n                \"createdAt\": {\n                    \"type\": \"string\"\n                },\n                \"updatedAt\": {\n                    \"type\": \"string\"\n                }\n            }\n        },\n        \"success\": {\n            \"type\": \"boolean\"\n        }\n    }\n}\n\n ```"
+					},
+					"response": [
+						{
+							"name": "404",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"userId\":\"6c1aa66d-8118-48e6-918a-1e322385d3bb\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:9999/v1/tasks/:id/assign/users/",
+									"host": [
+										"localhost"
+									],
+									"port": "9999",
+									"path": [
+										"v1",
+										"tasks",
+										":id",
+										"assign",
+										"users",
+										""
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "59b4053d-f290-4756-a875-e21688a1379b"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"38-BnmpRFSIbDOSiHLmLTbfvipUic4\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 23 Aug 2024 19:36:14 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Task not found\",\n    \"data\": null,\n    \"success\": false\n}"
+						},
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"userId\":\"6c1aa66d-8118-48e6-918a-1e322385d3bb\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/tasks/:id/assign/users/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"tasks",
+										":id",
+										"assign",
+										"users",
+										""
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "29cc0a9c-0ec0-407f-bb51-f453954f3f8f"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"16e-1IRy4LlGoiGMByBKyVt85/Wedxs\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 23 Aug 2024 19:37:47 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Task\",\n    \"data\": {\n        \"id\": \"29cc0a9c-0ec0-407f-bb51-f453954f3f8f\",\n        \"title\": \"New Task\",\n        \"description\": \"A new task\",\n        \"dueDate\": \"2024-09-22T23:00:00.000Z\",\n        \"status\": \"TODO\",\n        \"createdBy\": \"a725aaed-b80a-4487-a06f-fe2b4f0568fa\",\n        \"assignedTo\": \"6c1aa66d-8118-48e6-918a-1e322385d3bb\",\n        \"createdAt\": \"2024-08-23T19:36:44.939Z\",\n        \"updatedAt\": \"2024-08-23T19:37:47.950Z\"\n    },\n    \"success\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "delete task",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/tasks/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"tasks",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "59b4053d-f290-4756-a875-e21688a1379b"
+								}
+							]
+						},
+						"description": "This endpoint sends an HTTP DELETE request to the specified task ID to delete the task.\n\n### Response\n\n204 is the success response to this request"
+					},
+					"response": [
+						{
+							"name": "404",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:9999/v1/tasks/:id",
+									"host": [
+										"localhost"
+									],
+									"port": "9999",
+									"path": [
+										"v1",
+										"tasks",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "59b4053d-f290-4756-a875-e21688a1379b"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"38-BnmpRFSIbDOSiHLmLTbfvipUic4\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 23 Aug 2024 19:36:26 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Task not found\",\n    \"data\": null,\n    \"success\": false\n}"
+						},
+						{
+							"name": "204",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/tasks/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"tasks",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "29cc0a9c-0ec0-407f-bb51-f453954f3f8f"
+										}
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 23 Aug 2024 19:38:07 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "update task",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"status\":\"COMPLETED\",\r\n    \"dueDate\":\"2024-08-22\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/tasks/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"tasks",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "077f6a6e-a381-4f87-a006-09134eb71afb"
+								}
+							]
+						},
+						"description": "This endpoint allows updating a specific task identified by the provided ID. The request should be sent as an HTTP PUT to the specified URL with the task ID in the endpoint. The request body should contain the updated status of the task.\n\n### Request Body\n\n- status (string, required): The updated status of the task.\n    \n\n### Response\n\nThe response will be in JSON format with the following schema:\n\n``` json\n{\n    \"type\": \"object\",\n    \"properties\": {\n        \"message\": {\n            \"type\": \"string\"\n        },\n        \"data\": {\n            \"type\": \"object\",\n            \"properties\": {\n                \"id\": {\n                    \"type\": \"string\"\n                },\n                \"title\": {\n                    \"type\": \"string\"\n                },\n                \"description\": {\n                    \"type\": \"string\"\n                },\n                \"dueDate\": {\n                    \"type\": \"string\"\n                },\n                \"status\": {\n                    \"type\": \"string\"\n                },\n                \"createdBy\": {\n                    \"type\": \"string\"\n                },\n                \"assignedTo\": {\n                    \"type\": \"string\"\n                },\n                \"createdAt\": {\n                    \"type\": \"string\"\n                },\n                \"updatedAt\": {\n                    \"type\": \"string\"\n                }\n            }\n        },\n        \"success\": {\n            \"type\": \"boolean\"\n        }\n    }\n}\n\n ```"
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"status\":\"COMPLETED\",\r\n    \"dueDate\":\"2024-08-22\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/tasks/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"tasks",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "077f6a6e-a381-4f87-a006-09134eb71afb"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"173-7qEygOc0kWEg4dNMATDTZC3MfyY\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 25 Aug 2024 19:38:59 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Task\",\n    \"data\": {\n        \"id\": \"077f6a6e-a381-4f87-a006-09134eb71afb\",\n        \"title\": \"New Task\",\n        \"description\": \"A new task\",\n        \"dueDate\": \"2024-09-23T00:00:00.000Z\",\n        \"status\": \"COMPLETED\",\n        \"createdBy\": \"a725aaed-b80a-4487-a06f-fe2b4f0568fa\",\n        \"assignedTo\": \"6c1aa66d-8118-48e6-918a-1e322385d3bb\",\n        \"createdAt\": \"2024-08-25T14:00:03.934Z\",\n        \"updatedAt\": \"2024-08-25T19:38:59.265Z\"\n    },\n    \"success\": true\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Tags",
+			"item": [
+				{
+					"name": "add Tags to task",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"urgent\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/tags/tasks/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"tags",
+								"tasks",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "5b2a6d86-9304-4613-b556-9eda379ff1e1"
+								}
+							]
+						},
+						"description": "This endpoint allows the user to update the tags associated with a specific task by sending an HTTP PUT request to the specified URL.\n\n### Request Body\n\n- The request should include a JSON payload with the following parameter:\n    \n    - `name`: (string) The name of the tag to be updated.\n        \n\n### Response\n\nThe response to this request will be in JSON format with the following properties:\n\n- `message`: (string) A message indicating the result of the request.\n    \n- `data`: (null) The data associated with the request, which is null in this case.\n    \n- `success`: (boolean) Indicates whether the request was successful.\n    \n\n### Example Response\n\n``` json\n{\n    \"message\": \"\",\n    \"data\": null,\n    \"success\": true\n}\n\n ```\n\n### JSON Schema for Response\n\n``` json\n{\n    \"type\": \"object\",\n    \"properties\": {\n        \"message\": {\n            \"type\": \"string\"\n        },\n        \"data\": {\n            \"type\": \"null\"\n        },\n        \"success\": {\n            \"type\": \"boolean\"\n        }\n    },\n    \"required\": [\"message\", \"data\", \"success\"]\n}\n\n ```"
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"bug\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:9999/v1/tags/tasks/:id",
+									"host": [
+										"localhost"
+									],
+									"port": "9999",
+									"path": [
+										"v1",
+										"tags",
+										"tasks",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "5b2a6d86-9304-4613-b556-9eda379ff1e1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"34-U8Idg1/H4nn6hyY3OWlhbS4fxms\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 23 Aug 2024 20:37:04 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Task tagged\",\n    \"data\": null,\n    \"success\": true\n}"
+						},
+						{
+							"name": "400",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"bug\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/tags/tasks/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"tags",
+										"tasks",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "5b2a6d86-9304-4613-b556-9eda379ff1e1"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"46-6c4I/G7593yuF3bIApqj8uO5rEs\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 23 Aug 2024 20:44:04 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Tag already assigned to task\",\n    \"data\": null,\n    \"success\": false\n}"
+						}
+					]
+				},
+				{
+					"name": "task tags",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/tags/tasks/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"tags",
+								"tasks",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "5b2a6d86-9304-4613-b556-9eda379ff1e1"
+								}
+							]
+						},
+						"description": "This endpoint retrieves the tags associated with a specific task identified by its ID. The response for this request can be documented as a JSON schema as follows:\n\n``` json\n{\n  \"type\": \"object\",\n  \"properties\": {\n    \"message\": {\n      \"type\": \"string\"\n    },\n    \"data\": {\n      \"type\": \"array\",\n      \"items\": {\n        \"type\": \"string\"\n      }\n    },\n    \"success\": {\n      \"type\": \"boolean\"\n    }\n  }\n}\n\n ```"
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:9999/v1/tags/tasks/:id",
+									"host": [
+										"localhost"
+									],
+									"port": "9999",
+									"path": [
+										"v1",
+										"tags",
+										"tasks",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "5b2a6d86-9304-4613-b556-9eda379ff1e1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"39-Ka30Nq9fYce8Iuu34oCbkjcse9A\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 23 Aug 2024 20:55:04 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Tags\",\n    \"data\": [\n        \"bug\",\n        \"urgent\"\n    ],\n    \"success\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "remove tag from task",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"bugs\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/tags/tasks/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"tags",
+								"tasks",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "5b2a6d86-9304-4613-b556-9eda379ff1e1"
+								}
+							]
+						},
+						"description": "### Delete Task Tag\n\nThis endpoint is used to delete a specific tag associated with a task.\n\n#### Request\n\n- Method: DELETE\n    \n\n#### Response\n\nThe response of this request is documented as a JSON schema."
+					},
+					"response": [
+						{
+							"name": "404",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"bugss\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:9999/v1/tags/tasks/:id",
+									"host": [
+										"localhost"
+									],
+									"port": "9999",
+									"path": [
+										"v1",
+										"tags",
+										"tasks",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "5b2a6d86-9304-4613-b556-9eda379ff1e1"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4d-czqwvISHakvwo4T97k584c9vQhs\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 23 Aug 2024 20:57:10 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Tag with name bugss does not exist.\",\n    \"data\": null,\n    \"success\": false\n}"
+						},
+						{
+							"name": "204",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"bugs\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/tags/tasks/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"tags",
+										"tasks",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "5b2a6d86-9304-4613-b556-9eda379ff1e1"
+										}
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 23 Aug 2024 20:57:27 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "remove all",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/tags/tasks/:id/all",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"tags",
+								"tasks",
+								":id",
+								"all"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "5b2a6d86-9304-4613-b556-9eda379ff1e1"
+								}
+							]
+						},
+						"description": "This endpoint sends an HTTP DELETE request to remove all tags associated with a specific task identified by its ID."
+					},
+					"response": [
+						{
+							"name": "204",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:9999/v1/tags/tasks/:id/all",
+									"host": [
+										"localhost"
+									],
+									"port": "9999",
+									"path": [
+										"v1",
+										"tags",
+										"tasks",
+										":id",
+										"all"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "5b2a6d86-9304-4613-b556-9eda379ff1e1"
+										}
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 23 Aug 2024 21:00:36 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Comments",
+			"item": [
+				{
+					"name": "add comment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"content\":\"This is my content\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/comments/tasks/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"comments",
+								"tasks",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "5104e95d-7c64-45d6-8454-11412c601fd1"
+								}
+							]
+						},
+						"description": "### Add Comment to Task\n\nThis endpoint allows the user to add a comment to a specific task identified by the `:id` parameter.\n\n#### Request Body\n\n- `content` (string, required): The content of the comment.\n    \n\n#### Response\n\nThe response for this request can be documented as a JSON schema:\n\n``` json\n{\n    \"type\": \"object\",\n    \"properties\": {\n        \"message\": {\n            \"type\": \"string\"\n        },\n        \"data\": {\n            \"type\": \"null\"\n        },\n        \"success\": {\n            \"type\": \"boolean\"\n        }\n    }\n}\n\n ```"
+					},
+					"response": [
+						{
+							"name": "201",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"content\":\"This is my content\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:9999/v1/comments/tasks/:id",
+									"host": [
+										"localhost"
+									],
+									"port": "9999",
+									"path": [
+										"v1",
+										"comments",
+										"tasks",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "5104e95d-7c64-45d6-8454-11412c601fd1"
+										}
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"36-jxJJ+QXYrErylBls0l0RtSwp/sk\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 23 Aug 2024 23:24:49 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Comment Added\",\n    \"data\": null,\n    \"success\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "get comments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/comments/tasks/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"comments",
+								"tasks",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "5104e95d-7c64-45d6-8454-11412c601fd1"
+								}
+							]
+						},
+						"description": "This endpoint retrieves comments associated with a specific task identified by its ID.\n\n### Response\n\nThe response is a JSON object with the following properties:\n\n- `message` (string): A message related to the response.\n    \n- `data` (array): An array of objects containing comment details, including:\n    \n    - `id` (string): The unique identifier for the comment.\n        \n    - `taskId` (string): The ID of the task associated with the comment.\n        \n    - `userId` (string): The ID of the user who created the comment.\n        \n    - `content` (string): The content of the comment.\n        \n    - `edited` (boolean): Indicates whether the comment has been edited.\n        \n    - `createdAt` (string): The timestamp when the comment was created.\n        \n    - `updatedAt` (string): The timestamp when the comment was last updated.\n        \n- `success` (boolean): Indicates the success status of the request.\n    \n\nThis response can be documented as a JSON schema for reference."
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:9999/v1/comments/tasks/:id",
+									"host": [
+										"localhost"
+									],
+									"port": "9999",
+									"path": [
+										"v1",
+										"comments",
+										"tasks",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "5104e95d-7c64-45d6-8454-11412c601fd1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"138-Xa/07crjW0jCERZE0Mo6DUfZgFM\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 23 Aug 2024 23:25:27 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Comments\",\n    \"data\": [\n        {\n            \"id\": \"11a96f93-aa3b-4ac8-8b64-70916d2e7ac3\",\n            \"taskId\": \"5104e95d-7c64-45d6-8454-11412c601fd1\",\n            \"userId\": \"a725aaed-b80a-4487-a06f-fe2b4f0568fa\",\n            \"content\": \"This is my content\",\n            \"edited\": false,\n            \"createdAt\": \"2024-08-23T23:24:49.818Z\",\n            \"updatedAt\": \"2024-08-23T23:24:49.818Z\"\n        }\n    ],\n    \"success\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "edit comment",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"content\":\"Updated init\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/comments/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"comments",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "11a96f93-aa3b-4ac8-8b64-70916d2e7ac3"
+								}
+							]
+						},
+						"description": "### Update Comment\n\nThis endpoint is used to update a specific comment by its ID.\n\n#### Request\n\n- Method: `PUT`\n    \n- Body:\n    \n    - content (string, required): The updated content of the comment.\n        \n\n#### Response\n\nThe response for this request can be documented as a JSON schema:\n\n``` json\n{\n  \"type\": \"object\",\n  \"properties\": {\n    \"message\": {\n      \"type\": \"string\"\n    },\n    \"data\": {\n      \"type\": \"null\"\n    },\n    \"success\": {\n      \"type\": \"boolean\"\n    }\n  }\n}\n\n ```"
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"content\":\"Updated init\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:9999/v1/comments/:id",
+									"host": [
+										"localhost"
+									],
+									"port": "9999",
+									"path": [
+										"v1",
+										"comments",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "11a96f93-aa3b-4ac8-8b64-70916d2e7ac3"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"37-05wlWndNZpMxtxjIaTtOdlFJhrs\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 23 Aug 2024 23:27:57 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Comment update\",\n    \"data\": null,\n    \"success\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "get comment",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/comments/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"comments",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "11a96f93-aa3b-4ac8-8b64-70916d2e7ac3"
+								}
+							]
+						},
+						"description": "This endpoint retrieves a specific comment by its ID. The response for this request follows the JSON schema below:\n\n``` json\n{\n  \"type\": \"object\",\n  \"properties\": {\n    \"message\": {\n      \"type\": \"string\"\n    },\n    \"data\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"id\": {\n          \"type\": \"string\"\n        },\n        \"taskId\": {\n          \"type\": \"string\"\n        },\n        \"userId\": {\n          \"type\": \"string\"\n        },\n        \"content\": {\n          \"type\": \"string\"\n        },\n        \"edited\": {\n          \"type\": \"boolean\"\n        },\n        \"createdAt\": {\n          \"type\": \"string\"\n        },\n        \"updatedAt\": {\n          \"type\": \"string\"\n        }\n      }\n    },\n    \"success\": {\n      \"type\": \"boolean\"\n    }\n  }\n}\n\n ```"
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:9999/v1/comments/:id",
+									"host": [
+										"localhost"
+									],
+									"port": "9999",
+									"path": [
+										"v1",
+										"comments",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "11a96f93-aa3b-4ac8-8b64-70916d2e7ac3"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"12e-6DSb623mraDBiCLurB4kbnRB/c4\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 23 Aug 2024 23:32:37 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Comment\",\n    \"data\": {\n        \"id\": \"11a96f93-aa3b-4ac8-8b64-70916d2e7ac3\",\n        \"taskId\": \"5104e95d-7c64-45d6-8454-11412c601fd1\",\n        \"userId\": \"a725aaed-b80a-4487-a06f-fe2b4f0568fa\",\n        \"content\": \"Updated init\",\n        \"edited\": true,\n        \"createdAt\": \"2024-08-23T23:24:49.818Z\",\n        \"updatedAt\": \"2024-08-23T23:27:57.012Z\"\n    },\n    \"success\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "delete comment",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/comments/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"comments",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "11a96f93-aa3b-4ac8-8b64-70916d2e7ac3"
+								}
+							]
+						},
+						"description": "This endpoint sends an HTTP DELETE request to delete a specific comment identified by its ID.\n\n### Response\n\nThe response of this request is a JSON schema representing the structure of the response data. The schema will outline the properties and their data types that can be expected in the response after a successful deletion."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Notification",
+			"item": [
+				{
+					"name": "get Notifications",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/notifications",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"notifications"
+							]
+						},
+						"description": "The endpoint retrieves notifications from the server.\n\n### Response\n\nThe response will be a JSON object with the following properties:\n\n- `message` (string): A message related to the response.\n    \n- `data` (array): An array of objects, each containing the following properties:\n    \n    - `id` (string): The unique identifier for the notification.\n        \n    - `userId` (string): The user ID associated with the notification.\n        \n    - `taskId` (string): The task ID associated with the notification.\n        \n    - `message` (string): The content of the notification message.\n        \n    - `isRead` (boolean): Indicates whether the notification has been read.\n        \n    - `createdAt` (string): The timestamp indicating when the notification was created.\n        \n- `success` (boolean): Indicates the success status of the response.\n    \n\n#### Example\n\n``` json\n{\n    \"message\": \"\",\n    \"data\": [\n        {\n            \"id\": \"\",\n            \"userId\": \"\",\n            \"taskId\": \"\",\n            \"message\": \"\",\n            \"isRead\": true,\n            \"createdAt\": \"\"\n        }\n    ],\n    \"success\": true\n}\n\n ```"
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/notifications",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"notifications"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"f1e-WEyqpJ7a+3sLCRqtEWTkxhoYe3Y\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 25 Aug 2024 22:14:53 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Notifications\",\n    \"data\": [\n        {\n            \"id\": \"caa6069c-7258-4fa6-892e-22eb08f4f377\",\n            \"userId\": \"42039819-0cbb-496f-9c00-c2583ba6caea\",\n            \"taskId\": \"e544443a-e82f-418a-b6af-1fefc60b877f\",\n            \"message\": \"A new Tag has been added to the task: New Task\",\n            \"isRead\": false,\n            \"createdAt\": \"2024-08-25T22:14:20.651Z\"\n        },\n        {\n            \"id\": \"a8182ff6-dbca-4a16-8e43-f8453eae56f4\",\n            \"userId\": \"42039819-0cbb-496f-9c00-c2583ba6caea\",\n            \"taskId\": \"e544443a-e82f-418a-b6af-1fefc60b877f\",\n            \"message\": \"A new Tag has been added to the task: New Task\",\n            \"isRead\": false,\n            \"createdAt\": \"2024-08-25T22:14:20.633Z\"\n        },\n        {\n            \"id\": \"79e91d33-07fd-4fe0-87d0-02a08d649e14\",\n            \"userId\": \"42039819-0cbb-496f-9c00-c2583ba6caea\",\n            \"taskId\": \"e544443a-e82f-418a-b6af-1fefc60b877f\",\n            \"message\": \"A new Tag has been added to the task: New Task\",\n            \"isRead\": false,\n            \"createdAt\": \"2024-08-25T22:14:20.615Z\"\n        },\n        {\n            \"id\": \"a4f87f01-68ce-4734-9493-1ecf65aa2328\",\n            \"userId\": \"42039819-0cbb-496f-9c00-c2583ba6caea\",\n            \"taskId\": \"e544443a-e82f-418a-b6af-1fefc60b877f\",\n            \"message\": \"A new Task has been assigned to you: New Task\",\n            \"isRead\": false,\n            \"createdAt\": \"2024-08-25T22:14:20.598Z\"\n        },\n        {\n            \"id\": \"b7611751-e9d9-445d-a92f-0de2ff9622fb\",\n            \"userId\": \"42039819-0cbb-496f-9c00-c2583ba6caea\",\n            \"taskId\": \"7df458e7-513b-430c-b6e3-b9df7fc872b9\",\n            \"message\": \"A new Tag has been added to the task: New Task\",\n            \"isRead\": false,\n            \"createdAt\": \"2024-08-25T22:14:17.986Z\"\n        },\n        {\n            \"id\": \"90c782c0-1445-4c22-8f05-2f488c4fc691\",\n            \"userId\": \"42039819-0cbb-496f-9c00-c2583ba6caea\",\n            \"taskId\": \"7df458e7-513b-430c-b6e3-b9df7fc872b9\",\n            \"message\": \"A new Tag has been added to the task: New Task\",\n            \"isRead\": false,\n            \"createdAt\": \"2024-08-25T22:14:17.960Z\"\n        },\n        {\n            \"id\": \"56ba1ab8-b69c-4e14-9e21-4d9d43c15b96\",\n            \"userId\": \"42039819-0cbb-496f-9c00-c2583ba6caea\",\n            \"taskId\": \"7df458e7-513b-430c-b6e3-b9df7fc872b9\",\n            \"message\": \"A new Tag has been added to the task: New Task\",\n            \"isRead\": false,\n            \"createdAt\": \"2024-08-25T22:14:17.831Z\"\n        },\n        {\n            \"id\": \"08d56404-0145-4ae7-bfc7-05581a36b73e\",\n            \"userId\": \"42039819-0cbb-496f-9c00-c2583ba6caea\",\n            \"taskId\": \"7df458e7-513b-430c-b6e3-b9df7fc872b9\",\n            \"message\": \"A new Task has been assigned to you: New Task\",\n            \"isRead\": false,\n            \"createdAt\": \"2024-08-25T22:14:17.569Z\"\n        },\n        {\n            \"id\": \"af3ddc86-8175-4c12-89df-56f4d6224e9f\",\n            \"userId\": \"42039819-0cbb-496f-9c00-c2583ba6caea\",\n            \"taskId\": \"2dfa0fd4-ce23-4bdc-b9cd-2fdecc859cdd\",\n            \"message\": \"A new Tag has been added to the task: New Task\",\n            \"isRead\": false,\n            \"createdAt\": \"2024-08-25T22:13:59.080Z\"\n        },\n        {\n            \"id\": \"1d335cbc-759f-4a1c-a5a0-fb20f58ec008\",\n            \"userId\": \"42039819-0cbb-496f-9c00-c2583ba6caea\",\n            \"taskId\": \"2dfa0fd4-ce23-4bdc-b9cd-2fdecc859cdd\",\n            \"message\": \"A new Tag has been added to the task: New Task\",\n            \"isRead\": false,\n            \"createdAt\": \"2024-08-25T22:13:59.051Z\"\n        },\n        {\n            \"id\": \"ec6d48e1-d87f-427b-8891-a872931a5db4\",\n            \"userId\": \"42039819-0cbb-496f-9c00-c2583ba6caea\",\n            \"taskId\": \"2dfa0fd4-ce23-4bdc-b9cd-2fdecc859cdd\",\n            \"message\": \"A new Tag has been added to the task: New Task\",\n            \"isRead\": false,\n            \"createdAt\": \"2024-08-25T22:13:58.937Z\"\n        },\n        {\n            \"id\": \"ebbd2990-5350-46ac-b095-ab3134b162e9\",\n            \"userId\": \"42039819-0cbb-496f-9c00-c2583ba6caea\",\n            \"taskId\": \"2dfa0fd4-ce23-4bdc-b9cd-2fdecc859cdd\",\n            \"message\": \"A new Task has been assigned to you: New Task\",\n            \"isRead\": false,\n            \"createdAt\": \"2024-08-25T22:13:58.755Z\"\n        },\n        {\n            \"id\": \"f1213c17-ecf7-489d-bbd2-dd11b043d701\",\n            \"userId\": \"42039819-0cbb-496f-9c00-c2583ba6caea\",\n            \"taskId\": \"a3b0ed63-85e5-41ee-9d06-6647ac68a54d\",\n            \"message\": \"A new Task has been assigned to you: New Task\",\n            \"isRead\": false,\n            \"createdAt\": \"2024-08-25T22:13:42.367Z\"\n        },\n        {\n            \"id\": \"56bd2651-0923-491e-889f-35288b46f3dc\",\n            \"userId\": \"42039819-0cbb-496f-9c00-c2583ba6caea\",\n            \"taskId\": \"6b4223c8-fdc7-4a24-9022-499dc64170e1\",\n            \"message\": \"A new Task has been assigned to you: New Task\",\n            \"isRead\": false,\n            \"createdAt\": \"2024-08-25T22:12:01.443Z\"\n        },\n        {\n            \"id\": \"42bb5ff3-15a9-4384-8722-54be92a8ee3a\",\n            \"userId\": \"42039819-0cbb-496f-9c00-c2583ba6caea\",\n            \"taskId\": \"25b88bfe-2ce5-4589-b7d8-e9bba754ee0d\",\n            \"message\": \"A new Task has been assigned to you: New Task\",\n            \"isRead\": false,\n            \"createdAt\": \"2024-08-25T22:11:53.126Z\"\n        }\n    ],\n    \"success\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Notification",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/notifications/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"notifications",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						},
+						"description": "The endpoint retrieves notification details for a specific ID via an HTTP GET request.\n\n### Response\n\nThe response will be in the form of a JSON object with the following schema:\n\n``` json\n{\n    \"type\": \"object\",\n    \"properties\": {\n        \"message\": {\n            \"type\": \"string\"\n        },\n        \"data\": {\n            \"type\": \"object\",\n            \"properties\": {\n                \"id\": {\n                    \"type\": \"string\"\n                },\n                \"userId\": {\n                    \"type\": \"string\"\n                },\n                \"taskId\": {\n                    \"type\": \"string\"\n                },\n                \"message\": {\n                    \"type\": \"string\"\n                },\n                \"isRead\": {\n                    \"type\": \"boolean\"\n                },\n                \"createdAt\": {\n                    \"type\": \"string\"\n                }\n            }\n        },\n        \"success\": {\n            \"type\": \"boolean\"\n        }\n    }\n}\n\n ```"
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/notifications/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"notifications",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "caa6069c-7258-4fa6-892e-22eb08f4f377"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"12f-EmE5Q0Gc6q820EIQGYMdQ7uEfMI\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 25 Aug 2024 22:16:28 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Notification\",\n    \"data\": {\n        \"id\": \"caa6069c-7258-4fa6-892e-22eb08f4f377\",\n        \"userId\": \"42039819-0cbb-496f-9c00-c2583ba6caea\",\n        \"taskId\": \"e544443a-e82f-418a-b6af-1fefc60b877f\",\n        \"message\": \"A new Tag has been added to the task: New Task\",\n        \"isRead\": false,\n        \"createdAt\": \"2024-08-25T22:14:20.651Z\"\n    },\n    \"success\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "read notification",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/notifications/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"notifications",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						},
+						"description": "The `PUT` request is used to update a specific notification identified by `:id`. Upon successful execution, the API returns a JSON response with a status code of 200 and a `Content-Type` of `application/json`. The response body includes the following fields:\n\n- `message` (string): A message related to the operation.\n    \n- `data` (null): This field may contain additional data related to the notification update.\n    \n- `success` (boolean): Indicates whether the operation was successful.\n    \n\n``` json\n{\n    \"type\": \"object\",\n    \"properties\": {\n        \"message\": {\n            \"type\": \"string\"\n        },\n        \"data\": {\n            \"type\": \"null\"\n        },\n        \"success\": {\n            \"type\": \"boolean\"\n        }\n    }\n}\n\n ```"
+					},
+					"response": []
+				},
+				{
+					"name": "delete notification",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/notifications/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"notifications",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "caa6069c-7258-4fa6-892e-22eb08f4f377"
+								}
+							]
+						},
+						"description": "This endpoint is used to delete a specific notification by its ID.\n\n### Response\n\nThe response for this request is a 204 status code with a Content-Type of text/xml. As per the user's request, the response can be documented as a JSON schema.\n\n``` json\n{\n  \"type\": \"object\",\n  \"properties\": {\n    \"status\": {\n      \"type\": \"number\",\n      \"description\": \"The HTTP status code indicating the success of the request.\"\n    },\n    \"Content-Type\": {\n      \"type\": \"string\",\n      \"description\": \"The type of content in the response.\"\n    }\n  }\n}\n\n ```"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "getMe",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/users/me",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"me"
+							]
+						},
+						"description": "The `GET /users/me` endpoint retrieves the details of the currently authenticated user. The response for this request follows the JSON schema below:\n\n``` json\n{\n  \"type\": \"object\",\n  \"properties\": {\n    \"message\": {\n      \"type\": \"string\"\n    },\n    \"data\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"id\": {\n          \"type\": \"string\"\n        },\n        \"username\": {\n          \"type\": \"string\"\n        },\n        \"email\": {\n          \"type\": \"string\"\n        },\n        \"role\": {\n          \"type\": \"string\"\n        },\n        \"createdAt\": {\n          \"type\": \"string\"\n        },\n        \"updatedAt\": {\n          \"type\": \"string\"\n        }\n      }\n    },\n    \"success\": {\n      \"type\": \"boolean\"\n    }\n  }\n}\n\n ```"
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:9999/v1/users/me",
+									"host": [
+										"localhost"
+									],
+									"port": "9999",
+									"path": [
+										"v1",
+										"users",
+										"me"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"e2-pJeuS+2AfvvM5VzdHXcJK0Wl9wA\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 25 Aug 2024 17:34:55 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"User\",\n    \"data\": {\n        \"id\": \"ce8ce798-75d9-44cc-8e20-38c2cf2bc962\",\n        \"username\": \"admin\",\n        \"email\": \"admin@example.com\",\n        \"role\": \"ADMIN\",\n        \"createdAt\": \"2024-08-25T17:32:54.028Z\",\n        \"updatedAt\": \"2024-08-25T17:32:54.028Z\"\n    },\n    \"success\": true\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "create User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"admin@test.com\",\r\n    \"username\":\"admin2\",\r\n    \"password\":\"Querty$1\",\r\n    \"role\":\"ADMIN\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/users/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								""
+							]
+						},
+						"description": "### Create New User\n\nThis endpoint allows Admin to create a new user.\n\n#### Request Body\n\n- email (string, required): The email of the user.\n    \n- username (string, required): The username of the user.\n    \n- password (string, required): The password of the user.\n    \n- role (string, required): The role of the user.\n    \n\n#### Response\n\nThe response will be a JSON object with the following properties:\n\n- message (string): A message related to the request.\n    \n- data (object): The data related to the request, which may be null.\n    \n- success (boolean): Indicates if the request was successful.\n    \n\n#### JSON Schema\n\n``` json\n{\n    \"type\": \"object\",\n    \"properties\": {\n        \"message\": { \"type\": \"string\" },\n        \"data\": { \"type\": [\"object\", \"null\"] },\n        \"success\": { \"type\": \"boolean\" }\n    }\n}\n\n ```"
+					},
+					"response": [
+						{
+							"name": "201",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\":\"admin@test.com\",\r\n    \"username\":\"admin2\",\r\n    \"password\":\"Querty$1\",\r\n    \"role\":\"ADMIN\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:9999/v1/users/",
+									"host": [
+										"localhost"
+									],
+									"port": "9999",
+									"path": [
+										"v1",
+										"users",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"42-CUFRlEEQTcy90S4x5C/lARbgv/g\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 25 Aug 2024 17:34:26 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"User created Successfully\",\n    \"data\": null,\n    \"success\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "get Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"description": "This endpoint sends an HTTP GET request to retrieve a list of users. The response is a JSON object with a \"message\" field, a \"data\" array containing user objects with \"id\", \"username\", \"email\", \"role\", \"createdAt\", and \"updatedAt\" fields, and a \"success\" boolean field indicating the success status of the request.\n\n``` json\n{\n  \"type\": \"object\",\n  \"properties\": {\n    \"message\": { \"type\": \"string\" },\n    \"data\": {\n      \"type\": \"array\",\n      \"items\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"id\": { \"type\": \"string\" },\n          \"username\": { \"type\": \"string\" },\n          \"email\": { \"type\": \"string\" },\n          \"role\": { \"type\": \"string\" },\n          \"createdAt\": { \"type\": \"string\" },\n          \"updatedAt\": { \"type\": \"string\" }\n        }\n      }\n    },\n    \"success\": { \"type\": \"boolean\" }\n  }\n}\n\n ```"
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:9999/v1/users",
+									"host": [
+										"localhost"
+									],
+									"port": "9999",
+									"path": [
+										"v1",
+										"users"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3bc-KfJX31o12GHcbKicmPf0OTcIrFo\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 25 Aug 2024 17:38:22 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Users\",\n    \"data\": [\n        {\n            \"id\": \"a725aaed-b80a-4487-a06f-fe2b4f0568fa\",\n            \"username\": \"test-\",\n            \"email\": \"test@test.com\",\n            \"role\": \"USER\",\n            \"createdAt\": \"2024-08-22T17:34:11.766Z\",\n            \"updatedAt\": \"2024-08-22T17:34:11.766Z\"\n        },\n        {\n            \"id\": \"6c1aa66d-8118-48e6-918a-1e322385d3bb\",\n            \"username\": \"test\",\n            \"email\": \"test1@test.com\",\n            \"role\": \"USER\",\n            \"createdAt\": \"2024-08-23T10:12:17.793Z\",\n            \"updatedAt\": \"2024-08-23T10:12:17.793Z\"\n        },\n        {\n            \"id\": \"81686172-6b6e-4850-ae61-b00e4c7a962a\",\n            \"username\": \"test0\",\n            \"email\": \"tes81@test.com\",\n            \"role\": \"USER\",\n            \"createdAt\": \"2024-08-25T14:05:22.790Z\",\n            \"updatedAt\": \"2024-08-25T14:05:22.790Z\"\n        },\n        {\n            \"id\": \"ce8ce798-75d9-44cc-8e20-38c2cf2bc962\",\n            \"username\": \"admin\",\n            \"email\": \"admin@example.com\",\n            \"role\": \"ADMIN\",\n            \"createdAt\": \"2024-08-25T17:32:54.028Z\",\n            \"updatedAt\": \"2024-08-25T17:32:54.028Z\"\n        },\n        {\n            \"id\": \"1b7ef684-0f38-458f-b091-26adaea9cd63\",\n            \"username\": \"admin2\",\n            \"email\": \"admin@test.com\",\n            \"role\": \"USER\",\n            \"createdAt\": \"2024-08-25T17:34:26.074Z\",\n            \"updatedAt\": \"2024-08-25T17:34:26.074Z\"\n        }\n    ],\n    \"success\": true\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "start",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:9999",
+					"host": [
+						"localhost"
+					],
+					"port": "9999"
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Health",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:9999/health",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"health"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{accessToken}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "localhost:9999/v1",
+			"type": "string"
+		},
+		{
+			"key": "accessToken",
+			"value": ""
+		}
+	]
+}

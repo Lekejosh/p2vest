@@ -26,7 +26,7 @@ class NotificationController {
       req.params.id,
       req.$user!.id,
     );
-    return res.status(200).send(response("Notification", result));
+    return res.status(200).send(response("Notification marked as read", result));
   };
   public deleteNotification = async (req: Request, res: Response) => {
     await this.notificationService.delete(req.params.id, req.$user!.id);

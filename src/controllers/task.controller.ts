@@ -26,10 +26,7 @@ class TaskController {
     const result = await this.taskService.deleteTask(req.params.id);
     return res.status(204).end();
   };
-  //   public getStatus = async (req: Request, res: Response) => {
-  //     const result = await this.taskService.getTasksByStatus(req.query.status);
-  //     return res.status(200).send(response("Task", result));
-  //   };
+;
   public assignTask = async (req: Request, res: Response) => {
     const result = await this.taskService.assignTask(req.params.id, req.body);
     return res.status(200).send(response("Task", result));
