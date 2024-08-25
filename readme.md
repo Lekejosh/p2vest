@@ -20,6 +20,8 @@ Welcome to the Multi-User Task Management API project! This API allows for manag
 - **Authentication**: JWT
 - **Documentation**: Postman
 
+## Database Design
+
 ![Database Design](./docs/db.png)
 
 ## Getting Started
@@ -100,15 +102,8 @@ Welcome to the Multi-User Task Management API project! This API allows for manag
 
    This will set up the PostgreSQL database, Redis cache, and the application.
 
-3. **Run Database Migrations**
 
-   After the containers are up, run the migrations using:
-
-   ```bash
-   docker-compose exec app npm run prisma:prod
-   ```
-
-4. **Access the Application**
+3. **Access the Application**
 
    The application should be accessible at `http://localhost:9999`.
 
